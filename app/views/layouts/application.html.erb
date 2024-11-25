@@ -1,0 +1,26 @@
+<!-- application.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MYblog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload" %> <!-- ต้องใช้แบบนี้ -->
+</head>
+<body>
+  <header>
+    <h1>MYblog</h1>
+    <% if user_signed_in? %>
+      <p>Welcome, <%= current_user.email %>!</p>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to "Login", new_user_session_path %> |
+      <%= link_to "Sign Up", new_user_registration_path %>
+    <% end %>
+  </header>
+
+  <%= yield %>
+</body>
+</html>

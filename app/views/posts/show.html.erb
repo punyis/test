@@ -1,0 +1,49 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.content %></p>
+
+<!-- ฟีเจอร์ถูกใจ -->
+<div>
+  <% if user_signed_in? %>
+    <% if @post.likes.exists?(user_id: current_user.id) %>
+      <%= link_to "Unlike", unlike_post_path(@post), method: :delete, class: "btn btn-danger" %>
+    <% else %>
+      <%= form_with url: like_post_path(@post), method: :post, local: true do |form| %>
+        <%= form.submit "Like", class: "btn btn-primary" %>
+      <% end %>
+    <% end %>
+    <p><%= @post.likes.count %> likes</p>
+  <% else %>
+    <p><%= @post.likes.count %> likes</p>
+    <p><%= link_to "Log in to like this post", new_user_session_path %></p>
+  <% end %>
+</div>
+
+<!-- แสดงคอมเมนต์ -->
+<h3>Comments:</h3>
+<div>
+  <% @post.comments.each do |comment| %>
+    <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
+  <% end %>
+</div>
+
+<!-- ฟอร์มคอมเมนต์ -->
+<% if user_signed_in? %>
+  <h3>Add a comment:</h3>
+  <%= form_with model: [@post, @post.comments.build], local: true do |form| %>
+    <div class="field">
+      <%= form.text_area :content, placeholder: "Write your comment here..." %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Comment", class: "btn btn-success" %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%= link_to "Log in to add a comment", new_user_session_path %></p>
+<% end %>
+
+<!-- ฟีเจอร์การแก้ไขและลบโพสต์ -->
+<% if user_signed_in? && @post.user == current_user %>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-warning' %>
+  <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+<% end %>
+
