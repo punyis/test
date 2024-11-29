@@ -2,10 +2,10 @@
 <p><%= @post.content %></p>
 
 <!-- ฟีเจอร์ถูกใจ -->
-<div>
+<div class="like-section">
   <% if user_signed_in? %>
     <% if @post.likes.exists?(user_id: current_user.id) %>
-      <%= link_to "Unlike", unlike_post_path(@post), method: :delete, class: "btn btn-danger" %>
+      <%= button_to "Unlike", unlike_post_path(@post), method: :delete, class: 'btn btn-danger' %>
     <% else %>
       <%= form_with url: like_post_path(@post), method: :post, local: true do |form| %>
         <%= form.submit "Like", class: "btn btn-primary" %>
@@ -20,7 +20,7 @@
 
 <!-- แสดงคอมเมนต์ -->
 <h3>Comments:</h3>
-<div>
+<div class="comments-section">
   <% @post.comments.each do |comment| %>
     <p><strong><%= comment.user.email %>:</strong> <%= comment.content %></p>
   <% end %>
@@ -44,6 +44,5 @@
 <!-- ฟีเจอร์การแก้ไขและลบโพสต์ -->
 <% if user_signed_in? && @post.user == current_user %>
   <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-warning' %>
-  <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+  <%= button_to "Delete Post", post_path(@post), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
 <% end %>
-

@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
+  # Authentication routes for Devise
   devise_for :users
+  
 
+  # Post routes with nested comments and likes/unlikes
   resources :posts do
-    resources :comments, only: [:create]
-    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create] # Nested route for creating comments
+    
     member do
-      post 'like', to: 'likes#create'    # ใช้ post สำหรับ Like
-      delete 'unlike', to: 'likes#destroy' # ใช้ delete สำหรับ Unlike
+      post 'like', to: 'likes#create'     # Route for liking a post
+      delete 'unlike', to: 'likes#destroy' # Route for unliking a post
     end
   end
 
-  # เส้นทางสำหรับลบโพสต์
-  resources :posts, only: [:destroy]
-
+  # Root path
   root "posts#index"
 end

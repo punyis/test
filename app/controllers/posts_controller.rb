@@ -2,6 +2,7 @@ class PostsController < ApplicationController
     before_action :authenticate_user!, except: [:index, :show]
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :correct_user, only: [:edit, :update, :destroy]
+    
   
     def index
       if params[:search].present?
@@ -46,10 +47,14 @@ class PostsController < ApplicationController
     end
   
     def destroy
-        @post = Post.find(params[:id])
-        @post.destroy
-        redirect_to posts_path, notice: 'Post was successfully deleted.'
+      @post.destroy
+      respond_to do |format|
+        format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
+
+  
   
     private
   

@@ -1,23 +1,25 @@
-<!-- application.html.erb -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>MYblog</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Lilita+One&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload" %> <!-- ต้องใช้แบบนี้ -->
+  <%= stylesheet_link_tag "app", "data-turbo-track": "reload" %>  
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
 </head>
 <body>
   <header>
-    <h1>MYblog</h1>
+    <h1>VibeX</h1>
     <% if user_signed_in? %>
-      <p>Welcome, <%= current_user.email %>!</p>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-      <%= link_to "New Post", new_post_path, class: "btn btn-primary" %>
+      <p>Welcome, <%= current_user.email %> to VibeX!</p>
+      <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+      <%= button_to "New Post", new_post_path, class: "btn btn-primary" %>
     <% else %>
-      <%= link_to "Login", new_user_session_path %> |
-      <%= link_to "Sign Up", new_user_registration_path %>
+      <%= button_to "Log in", new_user_session_path %> |
+      <%= button_to "Sign Up", new_user_registration_path %>
     <% end %>
   </header>
 
