@@ -1,115 +1,140 @@
-
-    /* Reset margin, padding และ box-sizing */
+/* รีเซ็ตสไตล์ */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* กำหนดพื้นหลังแบบกราดิเอนต์ และใช้ฟอนต์ที่สดใส */
-  body {
-    background: linear-gradient(135deg, #6a4c93, #9b4dcb); /* สีน้ำเงินม่วงที่สดใส */
-    font-family: 'Lilita One', sans-serif; /* ฟอนต์ที่ทันสมัย */
-    color: #f8f8f8; /* สีข้อความที่อ่านง่าย */
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-  
-  /* กำหนดหัวข้อหลัก */
-  header {
-    width: 100%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-  }
-  
-  /* ข้อความ Welcome อยู่มุมซ้าย */
-  .welcome {
-    position: absolute;
-    left: 20px;
-    top: 20px;
-    font-size: 1.2rem;
-    color: #fff;
-  }
-  
-  /* ข้อความ VibeX อยู่ตรงกลาง */
-  h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* เงาเล็กๆ เพื่อทำให้ข้อความโดดเด่น */
-    margin: 40px 0;
-  }
-  
-  /* การจัดตำแหน่งของปุ่ม Login, Log Out, และ Sign Up */
-  .auth-links {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    display: flex;
-    gap: 10px;
-  }
-  
-  /* ปุ่มที่มีสีม่วงและเอฟเฟกต์ Hover */
-  button {
-    background-color: #8e44ad; /* สีม่วงสดใส */
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 12px 25px;
-    border-radius: 50px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-  }
-  
-  /* เอฟเฟกต์เมื่อ hover ปุ่ม */
-  button:hover {
-    background-color: #9b59b6; /* สีม่วงเข้มขึ้น */
-    transform: scale(1.05); /* ขยายขนาดเล็กน้อยเมื่อ hover */
-  }
-  
-  /* กล่องค้นหา */
-  .search-container {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 30px;
-  }
-  
-  .search-container input[type="text"] {
-    width: 100%;
-    padding: 12px;
-    font-size: 1.2rem;
-    border-radius: 25px;
-    border: 2px solid #9b4dcb;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    outline: none;
-    transition: border-color 0.3s ease;
-  }
-  
-  .search-container input[type="text"]:focus {
-    border-color: #8e44ad;
-  }
-  
-  /* Footer */
-  footer {
-    background-color: #6a4c93; /* สีม่วงที่เบาลง */
-    color: #fff;
-    padding: 10px 0;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gowun Batang', serif;
+  background: linear-gradient(to right, #7e57c2, #ab47bc); /* สีพื้นหลังม่วงแบบ Gradient */
+  color: #fff;
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* การจัดการกล่องข้อความทั้งหมด */
+.box {
+  background-color: rgba(255, 255, 255, 0.1); /* กล่องพื้นหลังโปร่งใส */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  font-family: 'Lilita One', cursive;
+  font-size: 48px;
+  color: #ffeb3b; /* สีเหลือง */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px;
+}
+
+header p {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+header .btn {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* ปุ่มแบบต่างๆ */
+.btn-primary {
+  background-color: #42a5f5;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1e88e5;
+  transform: translateY(-3px);
+}
+
+.btn-danger {
+  background-color: #ef5350;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #e53935;
+  transform: translateY(-3px);
+}
+
+/* Welcome */
+header .welcome {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-family: 'Lobster Two', cursive;
+  font-size: 20px;
+  color: #ffcc80;
+}
+
+/* กล่องค้นหา */
+.search-box {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-box input[type="text"] {
+  width: 50%;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.search-box input[type="text"]:focus {
+  border-color: #ffeb3b;
+}
+
+.search-box button {
+  margin-left: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 25px;
+  background-color: #7e57c2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-box button:hover {
+  background-color: #5e35b1;
+}
+
+/* Footer */
+footer {
+  background: #4527a0;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-top: 2px solid #ffeb3b;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+
